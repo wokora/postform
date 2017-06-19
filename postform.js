@@ -88,6 +88,16 @@
                             submit_button.attr('disabled', false);
                             message.html(data.message).css({'color':brand_error});
                             icon.removeClass('fa-cog fa-warning fa-spin fa-ok').addClass('fa-remove').css({'color':brand_error});
+
+                            errorsHtml = '<div class="alert alert-danger"><ul>';
+
+                            $.each(data.errors, function(key, value){
+                                errorsHtml += '<li>' + value + '</li>'; //showing only the first error.
+                            });
+
+                            errorsHtml += '</ul></di>';
+
+                            feedback.html(errorsHtml);
                         };
                     },
                     timeout: 15000 // sets timeout to 3 seconds
@@ -103,4 +113,4 @@
 
     $.fn.postForm.defaults = {};
 
-})(jQuery, window, document);
+})(jQuery, window, document);   
